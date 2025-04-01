@@ -1,7 +1,7 @@
 <x-main-layout>
     <x-slot:title>Login | Workout Pulse</x-slot:title>
     <h1 class="text-center text-3xl my-3">Login to Workout Pulse:</h1>
-    <form action="#" method="POST">
+    <form action="{{ route('login') }}" method="POST">
       @csrf
       <!-- Usename -->
       <div class="grid grid-cols-2 border-1 border-[#4682A1] my-6 mx-72 p-2 rounded-xl">
