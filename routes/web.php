@@ -13,4 +13,5 @@ Route::get('/contacts', [StaticPagesController::class, 'contacts'])->name('conta
 Route::get('/login', [AuthenticationController::class, 'loginForm'])->name('login.form');
 
 Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup.form');
+Route::post('/signup', [AuthenticationController::class, 'signup'])->name('signup.store');
 
