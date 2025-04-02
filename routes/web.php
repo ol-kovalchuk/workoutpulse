@@ -18,5 +18,6 @@ Route::post('/signup', [AuthenticationController::class, 'signup'])->name('signu
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 // Workout tracking section
-Route::get('/workout-tracker', [WorkoutTrackerController::class, 'index'])->name('workout-tracker');
+Route::get('/workout-tracker', [WorkoutTrackerController::class, 'index'])->name('workout.tracker');
+Route::post('/workout-tracker', [WorkoutTrackerController::class, 'store'])->name('workout.store');
 
