@@ -20,7 +20,7 @@ class AuthenticationController extends Controller
         $fields = $request->validated();
         if (auth()->attempt($fields)) {
             $request->session()->regenerate();
-            return redirect()->route('home')->with('success', $fields['username'] . ' has successfully logged in.');
+            return redirect()->route('home')->with('success',  'Welcome back, ' . $fields['username'] . '!');
         } else {
             return redirect()->route('home')->with('error', 'Log in data is incorrect');
         }
