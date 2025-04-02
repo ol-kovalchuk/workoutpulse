@@ -4,9 +4,19 @@
         <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('home') }}">Home</a></li>
         <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('about') }}">About</a></li>
         <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('contacts') }}">Contacts</a></li>
-        <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Health Tests</a></li>
-        <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Vital Signs</a></li>
-        <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Convict Conditioning</a></li>
-        <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Login / Sign Up</a></li>
+        @auth
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Workout Tracker</a></li>
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Health Tests</a></li>
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Vital Signs</a></li>
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Convict Conditioning</a></li>
+            <li class="mt-7">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <input type="submit" value="Logout ({{ auth()->user()->username }})" class="hover:text-orange-400 hover:underline cursor-pointer">
+            </form>
+            </li>
+        @else
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('login.form') }}">Login / Sign Up</a></li>
+        @endauth
     </ul>
 </nav>

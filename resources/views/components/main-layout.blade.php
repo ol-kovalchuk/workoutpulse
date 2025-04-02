@@ -10,8 +10,10 @@
 <body class="text-[#3D52A0] bg-[#FBE9D0]">
     <header>
         <x-navbar />
+        <x-flash-success />
+        <x-flash-error />
     </header>
-    <main class="mb-[4em] m-3">
+    <main class="mb-[4em] m-4">
         {{ $slot }}
     </main>
     <footer class="fixed bottom-0 bg-[#3B945E] w-full">
