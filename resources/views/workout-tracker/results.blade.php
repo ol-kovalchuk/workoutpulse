@@ -9,8 +9,8 @@
                 <th class="border border-[#4682A1] p-4">Squats</th>
                 <th class="border border-[#4682A1] p-4">Dips</th>
                 <th class="border border-[#4682A1] p-4">Pull-ups</th>
-                <th class="border border-[#4682A1] p-4">Pull-ups</th>
-                <th class="border border-[#4682A1] p-4">Pull-ups</th>
+                <th class="border border-[#4682A1] p-4">Date</th>
+                <th class="border border-[#4682A1] p-4">Time</th>
             </tr>
         </thead>
         @foreach ($workoutSessions as $workout)
