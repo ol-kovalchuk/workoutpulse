@@ -21,4 +21,10 @@ class WorkoutTrackerController extends Controller
 
         return redirect()->route('workout.tracker')->with('success','Workout session was successfully saved.');
     }
+
+    public function show()
+    {
+        $workoutCollection = WorkoutTracker::all();
+        return view('workout-tracker.results', compact('workoutCollection'));
+    }
 }

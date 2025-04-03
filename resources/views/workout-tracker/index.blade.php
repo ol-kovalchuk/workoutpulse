@@ -2,7 +2,7 @@
     <x-slot:title>Workout Tracker | {{ env('APP_NAME') }}</x-slot:title>
     <h1 class="text-center text-3xl">Workout Tracker</h1>
     <h3>
-        <a href="#" class="ml-[80%] mt-4 px-6 py-2 rounded-md bg-[#4682A1] text-white border-[#366899] hover:bg-[#366899]">
+        <a href="{{ route('workout.results') }}" class="ml-[80%] mt-4 px-6 py-2 rounded-md bg-[#4682A1] text-white border-[#366899] hover:bg-[#366899]">
             Results
         </a>
     </h3>
