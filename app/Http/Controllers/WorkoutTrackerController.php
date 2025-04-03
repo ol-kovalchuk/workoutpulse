@@ -24,7 +24,7 @@ class WorkoutTrackerController extends Controller
 
     public function show()
     {
-        $workoutCollection = WorkoutTracker::all();
-        return view('workout-tracker.results', compact('workoutCollection'));
+        $workoutSessions = auth()->user()->workoutSessions;
+        return view('workout-tracker.results', compact('workoutSessions'));
     }
 }
