@@ -6,7 +6,7 @@
         <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('contacts') }}">Contacts</a></li>
         @auth
             <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('workout.tracker') }}">Workout Tracker</a></li>
-            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Health Tests</a></li>
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('health.tests') }}">Health Tests</a></li>
             <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Vital Signs</a></li>
             <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Convict Conditioning</a></li>
             <li class="mt-7">

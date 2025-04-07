@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\WorkoutTrackerController;
+use App\Http\Controllers\HealthTestsController;
 
 // Static pages
 Route::get('/', [StaticPagesController::class, 'index'])->name('home');
@@ -27,3 +28,7 @@ Route::post('/workout-tracker', [WorkoutTrackerController::class, 'store'])->nam
 Route::get('/workout-tracker/results', [WorkoutTrackerController::class, 'show'])->name('workout.results')
 ->middleware('guestRestrict');
 
+// Health Tests section
+Route::get('/health-tests', [HealthTestsController::class, 'index'])->name('health.tests');
+Route::get('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiForm'])->name('health-tests.bmi');
+Route::post('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiStore'])->name('health-tests.bmi.store');
