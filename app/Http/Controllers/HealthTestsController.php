@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BodyMassIndex;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBmiRequest;
 use App\Helpers\HealthTestsCalculations as TestCalc;
@@ -34,5 +35,12 @@ class HealthTestsController extends Controller
         $message = 'Your body mass index is ' . $bmi['index'] . ', result - ' . $bmi['result'] . '.';
 
         return to_route('health.tests')->with('success', $message);
+    }
+
+    public function getResults()
+    {
+        $bmi = BodyMassIndex::all();
+
+        return view('health-tests.results', compact('bmi'));
     }
 }

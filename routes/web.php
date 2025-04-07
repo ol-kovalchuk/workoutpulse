@@ -32,3 +32,4 @@ Route::get('/workout-tracker/results', [WorkoutTrackerController::class, 'show']
 Route::get('/health-tests', [HealthTestsController::class, 'index'])->name('health.tests');
 Route::get('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiForm'])->name('health-tests.bmi');
 Route::post('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiStore'])->name('health-tests.bmi.store');
+Route::get('health-tests/results', [HealthTestsController::class, 'getResults'])->name('health-tests.results');
