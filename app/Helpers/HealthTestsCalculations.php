@@ -16,5 +16,18 @@ class HealthTestsCalculations
 
         return $bmi;
     }
+
+    public static function getRuffierIndex($pulse1, $pulse2, $pulse3)
+    {
+        $ruffierTest['index'] = (4 * ($pulse1 + $pulse2 + $pulse3) - 200) / 10;
+        $ruffierTest['result'] = match (true) {
+            $ruffierTest['index'] < 5 => 'Excellent cardiovascular health',
+            $ruffierTest['index'] < 10 => 'Good fitness, but with room for improvement',
+            $ruffierTest['index'] < 15 => 'Fair fitness level, some concern about heart health',
+            $ruffierTest['index'] >= 15 => 'Poor fitness or cardiovascular concerns'
+        };
+
+        return $ruffierTest;
+    }
 }
 
