@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BodyMassIndex::class);
     }
+
+    public function ruffierIndex(): HasMany
+    {
+        return $this->hasMany(RuffierIndex::class);
+    }
 }

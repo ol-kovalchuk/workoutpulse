@@ -64,7 +64,8 @@ class HealthTestsController extends Controller
     public function getResults()
     {
         $bmi = auth()->user()->bmi;
+        $ruffierTest = auth()->user()->ruffierIndex;
 
-        return view('health-tests.results', compact('bmi'));
+        return view('health-tests.results', compact('bmi', 'ruffierTest'));
     }
 }
