@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VitalSignsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\AuthenticationController;
@@ -29,9 +30,20 @@ Route::get('/workout-tracker/results', [WorkoutTrackerController::class, 'show']
 ->middleware('guestRestrict');
 
 // Health Tests section
-Route::get('/health-tests', [HealthTestsController::class, 'index'])->name('health.tests');
-Route::get('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiForm'])->name('health-tests.bmi');
+Route::get('/health-tests', [HealthTestsController::class, 'index'])->name('health.tests')
+->middleware('guestRestrict');
+Route::get('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiForm'])->name('health-tests.bmi')
+->middleware('guestRestrict');
 Route::post('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiStore'])->name('health-tests.bmi.store');
-Route::get('/health-tests/ruffier-test', [HealthTestsController::class, 'ruffierTestForm'])->name('health-tests.ruffier');
+Route::get('/health-tests/ruffier-test', [HealthTestsController::class, 'ruffierTestForm'])
+->name('health-tests.ruffier')->middleware('guestRestrict');;
 Route::post('/health-tests/ruffier-test', [HealthTestsController::class, 'ruffierTestStore'])->name('health-tests.ruffier.store');
-Route::get('health-tests/results', [HealthTestsController::class, 'getResults'])->name('health-tests.results');
+Route::get('health-tests/results', [HealthTestsController::class, 'getResults'])->name('health-tests.results')
+->middleware('guestRestrict');;
+
+// Vital signs section
+Route::get('/vital-signs', [VitalSignsController::class, 'index'])->name('vital-signs')
+->middleware('guestRestrict');;
+Route::post('/vital-signs', [VitalSignsController::class, 'vitalSignsStore'])->name('vital-signs.store');
+Route::get('/vital-signs/measurements', [VitalSignsController::class, 'measurements'])
+->name('vital-signs.measurements')->middleware('guestRestrict');;

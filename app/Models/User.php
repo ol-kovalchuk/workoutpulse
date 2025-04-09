@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RuffierIndex::class);
     }
+
+    public function vitalSignsMeasurements(): HasMany
+    {
+        return $this->hasMany(VitalSign::class);
+    }
 }
