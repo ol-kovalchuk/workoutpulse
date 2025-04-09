@@ -7,8 +7,8 @@
         @auth
             <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('workout.tracker') }}">Workout Tracker</a></li>
             <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('health.tests') }}">Health Tests</a></li>
-            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Vital Signs</a></li>
-            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Convict Conditioning</a></li>
+            <li class="mt-7 hover:text-orange-400 hover:underline"><a href="{{ route('vital-signs') }}">Vital Signs</a></li>
+            {{-- <li class="mt-7 hover:text-orange-400 hover:underline"><a href="#">Convict Conditioning</a></li> --}}
             <li class="mt-7">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
