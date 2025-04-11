@@ -6,6 +6,7 @@ use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\WorkoutTrackerController;
 use App\Http\Controllers\HealthTestsController;
+use App\Http\Controllers\ProfileController;
 
 // Static pages
 Route::get('/', [StaticPagesController::class, 'index'])->name('home');
@@ -47,3 +48,6 @@ Route::get('/vital-signs', [VitalSignsController::class, 'index'])->name('vital-
 Route::post('/vital-signs', [VitalSignsController::class, 'vitalSignsStore'])->name('vital-signs.store');
 Route::get('/vital-signs/measurements', [VitalSignsController::class, 'measurements'])
 ->name('vital-signs.measurements')->middleware('guestRestrict');;
+
+// Profile section
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
