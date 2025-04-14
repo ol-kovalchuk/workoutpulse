@@ -22,9 +22,9 @@ class StoreRuffierIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pulse_1' => ['required', 'numeric', 'min:5', 'max:100'],
-            'pulse_2' => ['required', 'numeric', 'min:5', 'max:100'],
-            'pulse_3' => ['required', 'numeric', 'min:5', 'max:100']
+            'pulse_1' => ['required', 'numeric', 'min:30', 'max:200'],
+            'pulse_2' => ['required', 'numeric', 'min:30', 'max:200'],
+            'pulse_3' => ['required', 'numeric', 'min:30', 'max:200']
         ];
     }
 }

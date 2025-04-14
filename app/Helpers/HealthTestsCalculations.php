@@ -19,7 +19,7 @@ class HealthTestsCalculations
 
     public static function getRuffierIndex($pulse1, $pulse2, $pulse3)
     {
-        $ruffierTest['index'] = (4 * ($pulse1 + $pulse2 + $pulse3) - 200) / 10;
+        $ruffierTest['index'] = ($pulse1 + $pulse2 + $pulse3 - 200) / 10;
         $ruffierTest['result'] = match (true) {
             $ruffierTest['index'] < 5 => 'Excellent cardiovascular health',
             $ruffierTest['index'] < 10 => 'Good fitness, but with room for improvement',

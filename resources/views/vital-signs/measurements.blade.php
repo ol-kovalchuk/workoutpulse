@@ -17,10 +17,10 @@
             <tr class="border border-[#4682A1]">
                 <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->created_at->format('m/d/Y') }}</td>
                 <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->created_at->format('H:i:s') }}</td>
-                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->temperature }}</td>
-                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->pulse }}</td>
-                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->breathing }}</td>
-                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->systolic }}/{{ $measurement->diastolic }}</td>
+                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->temperature }} &deg;C</td>
+                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->pulse }} bpm</td>
+                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->breathing }} rpm</td>
+                <td class="border border-[#4682A1] px-4 text-center">{{ $measurement->systolic }}/{{ $measurement->diastolic }} mmHg</td>
             </tr>
             @endforeach
         </tbody>
