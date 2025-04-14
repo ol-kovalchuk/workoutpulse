@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -59,13 +60,28 @@ class User extends Authenticatable
         return $this->hasMany(BodyMassIndex::class);
     }
 
+    public function latestBmi(): HasOne
+    {
+        return $this->hasOne(BodyMassIndex::class)->latestOfMany();
+    }
+
     public function ruffierIndex(): HasMany
     {
         return $this->hasMany(RuffierIndex::class);
     }
 
+    public function latestRuffierIndex(): HasOne
+    {
+        return $this->hasOne(RuffierIndex::class)->latestOfMany();
+    }
+
     public function vitalSignsMeasurements(): HasMany
     {
         return $this->hasMany(VitalSign::class);
+    }
+
+    public function latestVitalSignsMeasurements(): HasOne
+    {
+        return $this->hasOne(VitalSign::class)->latestOfMany();
     }
 }

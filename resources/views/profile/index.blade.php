@@ -6,6 +6,7 @@
         <h2 class="text-xl mb-1">Basic information</h2>
         <li><b>Full name: </b>{{ $user->first_name }} {{ $user->last_name }}</li>
         <li><b>Age: </b>{{ $user->age }} years</li>
+        <li><b>Email: </b>{{ $user->email }}</li>
         <hr class="my-2">
         <!-- Tests results and physical measurements -->
         <h2 class="text-xl mb-1">Tests results and physical measurements</h2>
@@ -34,10 +35,38 @@
         <!-- Vital signs -->
         <h2 class="text-xl mb-1">Vital signs</h2>
         @if ($vitalSigns)
-        <li><b>Temperature: </b>{{ $vitalSigns->temperature }} &deg;C</li>
-        <li><b>Heart rate: </b>{{ $vitalSigns->pulse }} bpm</li>
-        <li><b>Respiration rate: </b>{{ $vitalSigns->breathing }} rpm</li>
-        <li><b>Blood pressure: </b>{{ $vitalSigns->systolic }}/{{ $vitalSigns->diastolic }} mmHg</li>
+        <!-- Temperature -->
+        <li class="grid grid-cols-12">
+            <span class="col-span-2"><b>Temperature: </b></span>
+            <span class="col-span-1">
+                <meter value="{{ $vitalSigns->temperature }}" min="35" max="42" low="36" high="38" optimum="36.6"></meter>
+            </span>
+            <span class="col-span-9">{{ $vitalSigns->temperature }} &deg;C ({{ $vitalSigns->temperatureResult }})</span>
+        </li>
+        <!-- Heart rate -->
+        <li class="grid grid-cols-12">
+            <span class="col-span-2"><b>Heart rate: </b></span>
+            <span class="col-span-1">
+                <meter value="{{ $vitalSigns->pulse }}" min="40" max="200" low="60" high="120" optimum="70"></meter>
+            </span>
+            <span class="col-span-9">{{ $vitalSigns->pulse }} bpm ({{ $vitalSigns->pulseResult }})</span>
+        </li>
+        <!-- Respiration rate -->
+        <li class="grid grid-cols-12">
+            <span class="col-span-2"><b>Respiration rate: </b></span>
+            <span class="col-span-1">
+                <meter value="{{ $vitalSigns->breathing }}" min="5" max="40" low="10" high="20" optimum="15"></meter>
+            </span>
+            <span class="col-span-9">{{ $vitalSigns->breathing }} rpm ({{ $vitalSigns->breathingResult }})</span>
+        </li>
+        <!-- Blood Pressure -->
+        <li class="grid grid-cols-12">
+            <span class="col-span-2"><b>Blood pressure: </b></span>
+            <span class="col-span-1">
+                <meter value="{{ $vitalSigns->systolic }}" min="90" max="180" low="100" high="140" optimum="120"></meter>
+            </span>
+            <span class="col-span-9">{{ $vitalSigns->pressure }} mmHg ({{ $vitalSigns->pressureResult }})</span>
+        </li>
         @else
         <li>
         {!! '<a href="' .  route('vital-signs') . '"class="bg-[#20B2AA] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#1C746F] hover:text-orange-300">
