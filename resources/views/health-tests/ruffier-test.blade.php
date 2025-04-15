@@ -41,7 +41,7 @@
         </section>
         <!-- Heart rate 3 -->
         <section class="grid grid-cols-3 border-1 border-[#4682A1] my-6 mx-64 p-2 rounded-xl">
-            <label for="pulse_3" class="col-span-2">Enter heart rate (15 seconds) in a minute after 2nd heart rate: </label>
+            <label for="pulse_3" class="col-span-2">Enter heart rate in a minute after 2nd heart rate: </label>
             <input type="number" class="col-span-1 border-1 border-[#366899] bg-[#F2F2F2]" id="pulse_3" name="pulse_3">
             @error("pulse_3")
             <p class="mt-1 text-red-700">{{ $message }}</p>

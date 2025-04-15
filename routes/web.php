@@ -26,7 +26,9 @@ Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logou
 // Workout tracking section
 Route::get('/workout-tracker', [WorkoutTrackerController::class, 'index'])->name('workout.tracker')
 ->middleware('guestRestrict');
-Route::post('/workout-tracker', [WorkoutTrackerController::class, 'store'])->name('workout.store');
+Route::get('/workout-tracker/general-workout', [WorkoutTrackerController::class, 'generalWorkout'])
+->name('general_workout')->middleware('guestRestrict');
+Route::post('/workout-tracker/general-workout', [WorkoutTrackerController::class, 'storeGeneralWorkout'])->name('general_workout.store');
 Route::get('/workout-tracker/results', [WorkoutTrackerController::class, 'show'])->name('workout.results')
 ->middleware('guestRestrict');
 
@@ -50,4 +52,4 @@ Route::get('/vital-signs/measurements', [VitalSignsController::class, 'measureme
 ->name('vital-signs.measurements')->middleware('guestRestrict');;
 
 // Profile section
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('guestRestrict');

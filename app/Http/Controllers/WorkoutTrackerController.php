@@ -13,7 +13,12 @@ class WorkoutTrackerController extends Controller
         return view('workout-tracker.index');
     }
 
-    public function store(StoreWorkoutRequest $request)
+    public function generalWorkout()
+    {
+        return view('workout-tracker.general-workout');
+    }
+
+    public function storeGeneralWorkout(StoreWorkoutRequest $request)
     {
         $fields = $request->validated();
         $fields['user_id'] = auth()->id();
