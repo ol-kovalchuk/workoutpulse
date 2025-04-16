@@ -13,17 +13,17 @@ class VitalSignsController extends Controller
         return view('vital-signs.index');
     }
 
-    public function vitalSignsStore(StoreVitalSignsRequest $request)
+    public function storeVitalSigns(StoreVitalSignsRequest $request)
     {
         $fields = $request->validated();
         $fields['user_id'] = auth()->id();
 
         VitalSign::create($fields);
 
-        return to_route('vital-signs')->with('success', 'Your vital signs measurements were saved.');
+        return to_route('vital_signs')->with('success', 'Your vital signs measurements were saved.');
     }
 
-    public function measurements()
+    public function getMeasurements()
     {
         $measurements = auth()->user()->vitalSignsMeasurements;
 

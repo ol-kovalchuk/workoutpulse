@@ -50,7 +50,7 @@ class VitalSignsMetrics
             $systolic < 130 && $diastolic < 80 => 'Normal blood pressure',
             $systolic < 140 && $diastolic < 90 => 'Elevated blood pressure',
             $systolic < 160 && $diastolic < 100 => 'Hypertension',
-            $systolic < 110 && $diastolic < 70 => 'Hypertension crisis',
+            $systolic > 160 && $diastolic > 100 => 'Hypertension crisis',
         };
 
         return $result;

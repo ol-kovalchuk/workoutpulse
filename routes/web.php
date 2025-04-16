@@ -9,47 +9,53 @@ use App\Http\Controllers\HealthTestsController;
 use App\Http\Controllers\ProfileController;
 
 // Static pages
-Route::get('/', [StaticPagesController::class, 'index'])->name('home');
-Route::get('/about', [StaticPagesController::class, 'about'])->name('about');
-Route::get('/contacts', [StaticPagesController::class, 'contacts'])->name('contacts');
+Route::controller(StaticPagesController::class)->group(function() {
+    Route::get('/', 'index')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/contacts', 'contacts')->name('contacts');
+});
 
-// Authentication section
-Route::get('/login', [AuthenticationController::class, 'loginForm'])->name('login.form')
-->middleware('authRestrict');
-Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
-Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup.form')
-->middleware('authRestrict');
-Route::post('/signup', [AuthenticationController::class, 'signup'])->name('signup.store');
-Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout')
-->middleware('guestRestrict');
+// Middleware for guest users
+Route::middleware('guestRestrict')->group(function() {
+    // Authentication controller
+    Route::controller(AuthenticationController::class)->group(function() {
+        Route::post('/logout', 'logout')->name('logout');
+    });
+    //Workout tracker controller
+    Route::controller(WorkoutTrackerController::class)->group(function() {
+        Route::get('/workout-tracker', 'index')->name('workout_tracker');
+        Route::get('/workout-tracker/general-workout', 'getGeneralWorkout')->name('general_workout');
+        Route::post('/workout-tracker/general-workout', 'storeGeneralWorkout')->name('general_workout.store');
+        Route::get('/workout-tracker/results', 'show')->name('workout.results');
+    });
+    // Health tests controller
+    Route::controller(HealthTestsController::class)->group(function() {
+        Route::get('/health-tests', 'index')->name('health_tests');
+        Route::get('/health-tests/body-mass-index', 'getBmiForm')->name('health_tests.bmi');
+        Route::post('/health-tests/body-mass-index', 'storeBmi')->name('health_tests.bmi.store');
+        Route::get('/health-tests/ruffier-test', 'getRuffierTestForm')->name('health_tests.ruffier');
+        Route::post('/health-tests/ruffier-test', 'storeRuffierTest')->name('health_tests.ruffier.store');
+        Route::get('health-tests/results', 'getResults')->name('health_tests.results');
+    });
+    // Vital signs controller
+    Route::controller(VitalSignsController::class)->group(function() {
+        Route::get('/vital-signs', 'index')->name('vital_signs');
+        Route::post('/vital-signs', 'storeVitalSigns')->name('vital_signs.store');
+        Route::get('/vital-signs/measurements', 'getMeasurements')->name('vital_signs.measurements');
+    });
+    // Profile controller
+    Route::controller(ProfileController::class)->group(function() {
+        Route::get('/profile', 'index')->name('profile');
+    });
+});
 
-// Workout tracking section
-Route::get('/workout-tracker', [WorkoutTrackerController::class, 'index'])->name('workout.tracker')
-->middleware('guestRestrict');
-Route::get('/workout-tracker/general-workout', [WorkoutTrackerController::class, 'generalWorkout'])
-->name('general_workout')->middleware('guestRestrict');
-Route::post('/workout-tracker/general-workout', [WorkoutTrackerController::class, 'storeGeneralWorkout'])->name('general_workout.store');
-Route::get('/workout-tracker/results', [WorkoutTrackerController::class, 'show'])->name('workout.results')
-->middleware('guestRestrict');
-
-// Health Tests section
-Route::get('/health-tests', [HealthTestsController::class, 'index'])->name('health.tests')
-->middleware('guestRestrict');
-Route::get('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiForm'])->name('health-tests.bmi')
-->middleware('guestRestrict');
-Route::post('/health-tests/body-mass-index', [HealthTestsController::class, 'bmiStore'])->name('health-tests.bmi.store');
-Route::get('/health-tests/ruffier-test', [HealthTestsController::class, 'ruffierTestForm'])
-->name('health-tests.ruffier')->middleware('guestRestrict');;
-Route::post('/health-tests/ruffier-test', [HealthTestsController::class, 'ruffierTestStore'])->name('health-tests.ruffier.store');
-Route::get('health-tests/results', [HealthTestsController::class, 'getResults'])->name('health-tests.results')
-->middleware('guestRestrict');;
-
-// Vital signs section
-Route::get('/vital-signs', [VitalSignsController::class, 'index'])->name('vital-signs')
-->middleware('guestRestrict');;
-Route::post('/vital-signs', [VitalSignsController::class, 'vitalSignsStore'])->name('vital-signs.store');
-Route::get('/vital-signs/measurements', [VitalSignsController::class, 'measurements'])
-->name('vital-signs.measurements')->middleware('guestRestrict');;
-
-// Profile section
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('guestRestrict');
+// Middleware for logged in users
+Route::middleware('authRestrict')->group(function() {
+    // Authentication controller
+    Route::controller(AuthenticationController::class)->group(function() {
+        Route::get('/login', 'loginForm')->name('login.form');
+        Route::post('/login', 'login')->name('login');
+        Route::get('/signup', 'signupForm')->name('signup.form');
+        Route::post('/signup', 'signup')->name('signup');
+    });
+});

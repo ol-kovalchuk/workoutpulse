@@ -16,7 +16,7 @@
         <li><b>Weight: </b>{{ $bmi->weight }} kg</li>
         @else
         <li>
-        {!! '<a href="' .  route('health-tests.bmi') . '"class="bg-[#0275d8] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#034680] hover:text-orange-300">
+        {!! '<a href="' .  route('health_tests.bmi') . '"class="bg-[#0275d8] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#034680] hover:text-orange-300">
                 Take body mass index test
             </a>' !!}
         </li>
@@ -26,7 +26,7 @@
         <li><b>Ruffier index: </b>{{ $ruffierIndex->index }} ({{ $ruffierIndex->result }})</li>
         @else
         <li>
-        {!! '<a href="' .  route('health-tests.ruffier') . '"class="bg-[#5cb85c] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#0c570c] hover:text-orange-300">
+        {!! '<a href="' .  route('health_tests.ruffier') . '"class="bg-[#5cb85c] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#0c570c] hover:text-orange-300">
             Take Ruffier test
         </a>' !!}
         </li>
@@ -69,7 +69,7 @@
         </li>
         @else
         <li>
-        {!! '<a href="' .  route('vital-signs') . '"class="bg-[#20B2AA] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#1C746F] hover:text-orange-300">
+        {!! '<a href="' .  route('vital_signs') . '"class="bg-[#20B2AA] text-white p-1 inline-block mt-2 rounded-md hover:bg-[#1C746F] hover:text-orange-300">
             Fill vital signs
         </a>' !!}
         </li>

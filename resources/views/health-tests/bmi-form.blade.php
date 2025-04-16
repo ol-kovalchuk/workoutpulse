@@ -4,7 +4,7 @@
     <p class="indent-8"><strong>Body Mass Index (BMI)</strong> is a measure used to assess whether a person has a healthy body
         weight for a given height. It is calculated using the following formula:</p>
     <p class="text-center"><strong>BMI = height(m)<sup>2</sup> / weight(kg)</strong>​</p>
-    <form action="{{ route('health-tests.bmi.store') }}" method="POST">
+    <form action="{{ route('health_tests.bmi.store') }}" method="POST">
         @csrf
         <!-- Weight -->
         <section class="grid grid-cols-2 border-1 border-[#4682A1] my-6 mx-72 p-2 rounded-xl">

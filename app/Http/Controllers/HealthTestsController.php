@@ -17,12 +17,12 @@ class HealthTestsController extends Controller
         return view('health-tests.index');
     }
 
-    public function bmiForm()
+    public function getBmiForm()
     {
         return view('health-tests.bmi-form');
     }
 
-    public function bmiStore(StoreBmiRequest $request)
+    public function storeBmi(StoreBmiRequest $request)
     {
         $bmi = [];
         ['weight' => $weight, 'height' => $height] = $request->validated();;
@@ -35,15 +35,15 @@ class HealthTestsController extends Controller
         Bmi::create($bmi);
 
         $message = 'Your body mass index is ' . $bmi['index'] . ', result - ' . $bmi['result'] . '.';
-        return to_route('health.tests')->with('success', $message);
+        return to_route('health_tests')->with('success', $message);
     }
 
-    public function ruffierTestForm()
+    public function getRuffierTestForm()
     {
         return view('health-tests.ruffier-test');
     }
 
-    public function ruffierTestStore(StoreRuffierIndexRequest $request)
+    public function storeRuffierTest(StoreRuffierIndexRequest $request)
     {
         $ruffierTest = [];
         ['pulse_1' => $pulse1, 'pulse_2' => $pulse2, 'pulse_3' => $pulse3] = $request->validated();
@@ -57,7 +57,7 @@ class HealthTestsController extends Controller
         RuffierIndex::create($ruffierTest);
 
         $message = 'Your Ruffier index is ' . $ruffierTest['index'] . ', result - ' . $ruffierTest['result'] . '.';
-        return to_route('health.tests')->with('success', $message);
+        return to_route('health_tests')->with('success', $message);
 
     }
 

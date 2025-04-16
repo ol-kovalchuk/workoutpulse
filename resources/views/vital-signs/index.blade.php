@@ -2,11 +2,11 @@
     <x-slot:title>Vital Signs | {{ env('APP_NAME') }}</x-slot:title>
     <h1 class="text-center text-3xl">Vital Signs</h1>
     <h3>
-        <a href="{{ route('vital-signs.measurements') }}" class="ml-[80%] mt-4 px-6 py-2 rounded-md bg-[#4682A1] text-white border-[#366899] hover:bg-[#366899]">
+        <a href="{{ route('vital_signs.measurements') }}" class="ml-[80%] mt-4 px-6 py-2 rounded-md bg-[#4682A1] text-white border-[#366899] hover:bg-[#366899]">
             Vital signs measurements
         </a>
     </h3>
-    <form action="{{ route('vital-signs.store') }}" method="POST">
+    <form action="{{ route('vital_signs.store') }}" method="POST">
         @csrf
         <!-- Body temperature -->
         <section class="grid grid-cols-2 border-1 border-[#4682A1] my-6 mx-72 p-2 rounded-xl">

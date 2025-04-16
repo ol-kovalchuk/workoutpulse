@@ -13,7 +13,7 @@ class WorkoutTrackerController extends Controller
         return view('workout-tracker.index');
     }
 
-    public function generalWorkout()
+    public function getGeneralWorkout()
     {
         return view('workout-tracker.general-workout');
     }
@@ -24,7 +24,7 @@ class WorkoutTrackerController extends Controller
         $fields['user_id'] = auth()->id();
         WorkoutTracker::create($fields);
 
-        return redirect()->route('workout.tracker')->with('success','Workout session was successfully saved.');
+        return to_route('workout_tracker')->with('success','Workout session was successfully saved.');
     }
 
     public function show()
