@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-    build: {
-        sourcemap: false, // Disable source maps
-      },
     plugins: [
         laravel({
             input: [
@@ -15,15 +12,8 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        react(),
         tailwindcss(),
-        vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
-        }),
     ],
     server: {
         proxy: {
@@ -31,10 +21,5 @@ export default defineConfig({
             '/app': 'http://localhost',
         },
         cors: true, // Enable CORS
-    },
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
-        },
     },
 });

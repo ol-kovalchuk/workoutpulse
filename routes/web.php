@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\WorkoutTrackerController;
+use App\Http\Controllers\WorkoutProgramsController;
 use App\Http\Controllers\HealthTestsController;
 use App\Http\Controllers\ProfileController;
 
@@ -27,6 +28,13 @@ Route::middleware('guestRestrict')->group(function() {
         Route::get('/workout-tracker/general-workout', 'getGeneralWorkout')->name('general_workout');
         Route::post('/workout-tracker/general-workout', 'storeGeneralWorkout')->name('general_workout.store');
         Route::get('/workout-tracker/results', 'show')->name('workout.results');
+    });
+    //Workout programs controller
+    Route::controller(WorkoutProgramsController::class)->group(function() {
+        Route::get('/workout-programs/pushups', 'getPushupsProgram')->name('pushups_program');
+        Route::get('/workout-programs/pullups', 'getPullupsProgram')->name('pullups_program');
+        Route::get('/workout-programs/squats', 'getSquatsProgram')->name('squats_program');
+        Route::get('/workout-programs/abs', 'getAbsProgram')->name('abs_program');
     });
     // Health tests controller
     Route::controller(HealthTestsController::class)->group(function() {

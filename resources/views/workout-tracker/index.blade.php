@@ -13,7 +13,15 @@
             </a>
         </li>
     </ul>
-    <div id="workout-list">
-        <workout-programs></workout-programs>
-    </div>
+
+    @php
+    $routes = json_encode([
+        'pushups' => route('pushups_program'),
+        'pullups' => route('pullups_program'),
+        'squats' => route('squats_program'),
+        'abs' => route('abs_program'),
+    ]);
+@endphp
+
+<div id="workout-list" data-routes='{{ $routes }}'></div>
 </x-main-layout>
